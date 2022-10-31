@@ -94,3 +94,13 @@ func decodeSigInfoFile(content string) (sets.String, sets.String) {
 
 	return maintainers, committers
 }
+
+type Relation struct {
+	Relations []FileOwner `json:"relations" required:"true"`
+}
+
+type FileOwner struct {
+	// Path can be a file name or a dir name
+	Path  []string     `json:"path" required:"true"`
+	Owner []Maintainer `json:"owner,omitempty"`
+}
